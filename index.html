@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title updated: "Dashboard" removed -->
+    <title>รายงานการขับเคลื่อนโครงการ PLC สพป.เลย เขต 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&family=Titr:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        h1, h2, h3, h4, h5, h6, .stat-value {
+            font-family: 'Titr', sans-serif;
+        }
+        /* Custom styles for Chart.js tooltips */
+        .chartjs-tooltip {
+            font-family: 'Sarabun', sans-serif !important;
+        }
+        .chartjs-tooltip-title {
+            font-family: 'Titr', sans-serif !important;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-7xl mx-auto">
+
+        <!-- 1. Header Section -->
+        <header class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex flex-col items-center text-center">
+                <!-- Logos -->
+                <div class="flex flex-row justify-center items-center gap-4 mb-4">
+                    <!-- Logo 1 (Updated) -->
+                    <img src="https://loei1.go.th/wp-content/uploads/2022/05/2021-04-12_22-50-10.png" 
+                         alt="Logo สพป.เลย เขต 1" 
+                         class="h-24 object-contain"
+                         onerror="this.style.display='none'">
+                    <!-- Logo 2 -->
+                    <img src="https://loei1.go.th/wp-content/uploads/2025/07/logo-loei-1-is-one.png" 
+                         alt="Logo Loei 1 is One" 
+                         class="h-24 object-contain"
+                         onerror="this.style.display='none'">
+                </div>
+                
+                <!-- Text Content -->
+                <div class="w-full">
+                    <!-- Title updated: "Dashboard" removed -->
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-800">
+                        รายงานการขับเคลื่อนโครงการ
+                    </h1>
+                    <p class="text-lg md:text-xl font-semibold text-blue-700 mt-2">
+                        การพัฒนาชุมชนการเรียนรู้ทางวิชาชีพ (PLC) ครูผู้สอนภาษาต่างประเทศ (ระยะที่ 2)
+                    </p>
+                    <p class="text-base md:text-lg text-slate-600 mt-1">
+                        สำนักงานเขตพื้นที่การศึกษาประถมศึกษาเลย เขต 1
+                    </p>
+                    <p class="text-sm md:text-base text-slate-500 mt-2">
+                        ภายใต้ความร่วมมือกับ ศธจ.เลย, British Council, สพป.เลย เขต 1-3 และ สพม.เลย หนองบัวลำภู
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Key Metrics -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <!-- Metric 1: Total Participants -->
+            <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                <div>
+                    <div class="stat-value text-4xl font-bold text-blue-600">462</div>
+                    <div class="text-sm font-semibold text-slate-500 uppercase">
+                        ยอดลงทะเบียนรวม
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">
+                        (นับซ้ำจาก 3 กิจกรรม)
+                    </p>
+                </div>
+            </div>
+            <!-- Metric 2: Loei 1 Participants -->
+            <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                <div>
+                    <!-- THEME UPDATE: text-green-600 to text-blue-700 -->
+                    <div class="stat-value text-4xl font-bold text-blue-700">165</div>
+                    <div class="text-sm font-semibold text-slate-500 uppercase">
+                        จาก สพป.เลย เขต 1
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">
+                        (คิดเป็น 35.7% ของยอดรวม)
+                    </p>
+                </div>
+            </div>
+            <!-- Metric 3: Other Participants -->
+            <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                <div>
+                    <!-- THEME UPDATE: text-amber-600 to text-sky-600 -->
+                    <div class="stat-value text-4xl font-bold text-sky-600">297</div>
+                    <div class="text-sm font-semibold text-slate-500 uppercase">
+                        จากสังกัดอื่น
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">
+                        (สพม., สพป.2-3, เอกชน ฯลฯ)
+                    </p>
+                </div>
+            </div>
+            <!-- Metric 4: Activities -->
+            <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                <div>
+                    <div class="stat-value text-4xl font-bold text-indigo-600">3</div>
+                    <div class="text-sm font-semibold text-slate-500 uppercase">
+                        กิจกรรมการอบรม
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">
+                        (ระหว่างวันที่ 14-16 ตุลาคม 2568)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Overall Charts -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- Card 1: Bar Chart -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">จำนวนผู้เข้าร่วม (จำแนกตามกิจกรรม)</h3>
+                <canvas id="overallBarChart"></canvas>
+                <p class="text-sm text-slate-600 mt-4 text-center">
+                    สถิติเชิงพรรณนา (Descriptive Statistics) แสดงความถี่ (Frequency) ของผู้ลงทะเบียนใน 3 กิจกรรม พบว่า กิจกรรมที่ 1 (14 ต.ค.) มีผู้เข้าร่วมสูงสุด (N=181) ตามมาด้วยกิจกรรมที่ 2 (N=149) และกิจกรรมที่ 3 (N=132) ตามลำดับ
+                </p>
+            </div>
+            <!-- Card 2: Doughnut Chart -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">สัดส่วนผู้เข้าร่วมทั้งหมด (ทุกกิจกรรม)</h3>
+                <div class="max-w-xs mx-auto">
+                    <canvas id="overallDoughnutChart"></canvas>
+                </div>
+                <p class="text-sm text-slate-600 mt-4 text-center">
+                    การวิเคราะห์สัดส่วนผู้เข้าร่วมโครงการ (N=462) พบว่า สพป. เลย เขต 1 เป็นกลุ่มประชากรหลัก (ร้อยละ 35.7, N=165) รองลงมาคือ สพม. เลย-นภ (ร้อยละ 29.0, N=134) และ สพป. เขต 2 และ 3 ในสัดส่วนที่เท่ากัน (ร้อยละ 16.0, N=74)
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. Activity Breakdown (Vertical Layout) -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">รายละเอียดจำแนกตามกิจกรรม</h2>
+    
+            <!-- Activity 1 Card (FIXED: Added canvas and closing tags) -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">
+                        “การสร้างสรรค์สื่อเพื่อใช้ในกระบวนการเรียนรู้ภาษาอังกฤษเพื่อการสื่อสาร โดยใช้หลักการ CEFR และเทคโนโลยีปัญญาประดิษฐ์ (AI)”
+                    </h3>
+                    <p class="text-sm text-slate-500 mb-4">วันที่ 14 ตุลาคม 2568 (ยอดรวม 181 คน)</p>
+                    <div class="max-w-xs mx-auto">
+                         <canvas id="activity1Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-4 text-center">
+                        กิจกรรมที่ 1 (N=181): สพป. เลย เขต 1 มีสัดส่วนผู้เข้าร่วมสูงสุด (ร้อยละ 35.4, N=64) รองลงมาคือ สพม. (ร้อยละ 29.8, N=54) ซึ่งสอดคล้องกับภาพรวมโครงการ
+                    </p>
+                </div>
+            </div>
+
+            <!-- Activity 2 Card (FIXED: Added missing card) -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <!-- THEME UPDATE: text-green-700 to text-indigo-700 -->
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">
+                        “การใช้ AI เพื่อการออกแบบกิจกรรมการเรียนรู้ภาษาอังกฤษเพื่อการสื่อสาร (Communicative Language Teaching) Task-Based Learning”
+                    </h3>
+                    <p class="text-sm text-slate-500 mb-4">วันที่ 15 ตุลาคม 2568 (ยอดรวม 149 คน)</p>
+                    <div class="max-w-xs mx-auto">
+                         <canvas id="activity2Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-4 text-center">
+                        กิจกรรมที่ 2 (N=149): สพป. เลย เขต 1 ยังคงเป็นกลุ่มหลัก (ร้อยละ 36.9, N=55) โดยมีผู้เข้าร่วมจาก สพม. (ร้อยละ 28.9, N=43) ในสัดส่วนที่ใกล้เคียงกับภาพรวม
+                    </p>
+                </div>
+            </div>
+
+            <!-- Activity 3 Card (FIXED: Added missing card) -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <!-- THEME UPDATE: text-amber-700 to text-sky-700 -->
+                    <h3 class="text-xl font-bold text-sky-700 mb-2">
+                        “การจัดทำแผนพัฒนา PD Plan เพื่อเชื่อมโยงสู่ข้อตกลงในการพัฒนางาน (PA) และการแลกเปลี่ยนเรียนรู้ (PLC)”
+                    </h3>
+                    <p class="text-sm text-slate-500 mb-4">วันที่ 16 ตุลาคม 2568 (ยอดรวม 132 คน)</p>
+                    <div class="max-w-xs mx-auto">
+                         <canvas id="activity3Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-4 text-center">
+                        กิจกรรมที่ 3 (N=132): เป็นกิจกรรมที่มีอัตราการเข้าร่วมน้อยที่สุด โดย สพป. เลย เขต 1 ยังคงมีสัดส่วนสูงสุด (ร้อยละ 34.8, N=46) ข้อมูลนี้สะท้อนนัยสำคัญต่อการวางแผนในอนาคต
+                    </p>
+                </div>
+            </div>
+
+        </section> <!-- End of Section 4 -->
+
+        <!-- 5. Suggestions Section (UPDATED with Action-Oriented Cards: Active Learning & CLT) -->
+        <section class="mt-6">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">ข้อเสนอแนะเชิงนโยบายและการปฏิบัติ (Policy & Practical Recommendations)</h2>
+            
+            <!-- Grid for Suggestion Cards (Replaces the old <ul>) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Card 1: AI for Active Learning -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <!-- Card Header -->
+                    <div class="p-5 bg-blue-600 text-white">
+                        <h3 class="text-2xl font-bold flex items-center gap-3">
+                            <span class="text-3xl">🚀</span>
+                            AI เพื่อการสอนเชิงรุก
+                        </h3>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="p-6 flex-grow">
+                        <p class="text-slate-600 mb-4">
+                            ใช้ AI เป็น "ผู้ช่วย" ออกแบบเกม หรือสถานการณ์จำลอง (Simulations) เพื่อให้นักเรียนได้ "ฝึกใช้ภาษาจริง" ในห้องเรียน
+                        </p>
+                        <h4 class="font-bold text-slate-800 mb-2">แนวทางการนำไปใช้:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li>ใช้ AI (เช่น ChatGPT, Gemini) ช่วยสร้าง 'Role-Play Scenarios' ที่หลากหลายตามระดับผู้เรียน</li>
+                            <li>ใช้ AI สร้างควิซ หรือเกมคำศัพท์แบบโต้ตอบ (Interactive Quizzes) เพื่อกระตุ้นการมีส่วนร่วม</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2: CLT Focus -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <!-- Card Header -->
+                    <div class="p-5 bg-sky-600 text-white">
+                        <h3 class="text-2xl font-bold flex items-center gap-3">
+                            <span class="text-3xl">🗣️</span>
+                            เน้นการสื่อสารจริง (CLT)
+                        </h3>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="p-6 flex-grow">
+                        <p class="text-slate-600 mb-4">
+                            หัวใจของ CLT คือการ "ใช้ภาษาเพื่อสื่อสาร" ไม่ใช่แค่ "รู้ไวยากรณ์" ลดการบรรยายและเพิ่มกิจกรรมที่นักเรียนเป็นศูนย์กลาง
+                        </p>
+                        <h4 class="font-bold text-slate-800 mb-2">แนวทางการนำไปใช้:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li>ออกแบบ 'Task-Based Activities' (เช่น สั่งอาหาร, วางแผนเที่ยว, สัมภาษณ์เพื่อน)</li>
+                            <li>ประเมินผลจากการ "ทำภารกิจสำเร็จ" (Task Completion) มากกว่าความถูกต้องของไวยากรณ์ 100%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3: PA Connection -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <!-- Card Header -->
+                    <div class="p-5 bg-blue-700 text-white">
+                        <h3 class="text-2xl font-bold flex items-center gap-3">
+                            <span class="text-3xl">📄</span>
+                            การสะท้อนผลสู่ PA
+                        </h3>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="p-6 flex-grow">
+                        <p class="text-slate-600 mb-4">
+                            การปรับห้องเรียนเป็น Active Learning สะท้อนผลลัพธ์การเรียนรู้ (Learning Outcomes) ที่ชัดเจน ซึ่งเป็นหัวใจสำคัญของ PA
+                        </p>
+                        <h4 class="font-bold text-slate-800 mb-2">แนวทางการนำไปใช้:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li>นำเสนอแผนการสอน (Lesson Plan) ที่มีกิจกรรม Active Learning/CLT ในการประเมิน PA</li>
+                            <li>เก็บ "ผลงาน/ชิ้นงาน" (Portfolios) ของนักเรียนที่เกิดจากกิจกรรม Task-Based เป็นหลักฐานเชิงประจักษ์</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 4: PLC Expansion -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <!-- Card Header -->
+                    <div class="p-5 bg-sky-700 text-white">
+                        <h3 class="text-2xl font-bold flex items-center gap-3">
+                            <span class="text-3xl">🤝</span>
+                            ขยายผล PLC เชิงรุก
+                        </h3>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="p-6 flex-grow">
+                        <p class="text-slate-600 mb-4">
+                            สร้าง PLC ให้เป็น "พื้นที่แลกเปลี่ยน" เทคนิคการสอนแบบ Active Learning ที่ครูได้ทดลองใช้จริง
+                        </p>
+                        <h4 class="font-bold text-slate-800 mb-2">แนวทางการนำไปใช้:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li>จัด 'Micro-Teaching' (สอนให้เพื่อนครูดู) โดยใช้เทคนิค CLT และให้ข้อเสนอแนะร่วมกัน</li>
+                            <li>สร้าง "คลังกิจกรรม" (Activity Bank) กลางของโรงเรียน/เครือข่าย สำหรับกิจกรรม Active Learning ที่ใช้ได้ผลดี</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div> <!-- End of Grid -->
+        </section>
+
+        <!-- 6. Footer Section (NEWLY ADDED) -->
+        <footer class="mt-8 pt-4 border-t border-slate-300 text-center text-sm text-slate-600">
+            พัฒนาโดย กลุ่มนิเทศ ติดตามและประเมินผลการจัดการศึกษา<br>
+            สำนักงานเขตพื้นที่การศึกษาประถมศึกษาเลย เขต 1
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Chart.js Data and Configuration ---
+
+        // THEME UPDATE: Define new color palettes (Blue/Indigo/Sky)
+        const blueTheme = {
+            // Categorical palette for doughnut charts
+            categorical: [
+                '#2563eb', // blue-600 (สพป. 1)
+                '#4f46e5', // indigo-600 (สพม.)
+                '#0284c7', // sky-600 (สพป. 2)
+                '#38bdf8', // sky-400 (สพป. 3)
+                '#94a3b8'  // slate-400 (เอกชน)
+            ],
+             // Sequential palette for the bar chart
+            sequential: [
+                '#4f46e5', // indigo-600
+                '#2563eb', // blue-600
+                '#0284c7'  // sky-600
+            ],
+            // Specific order for Act 3 (Loei 3 is purple in old, now sky-400)
+            act3Categorical: [
+                '#2563eb', // blue-600 (สพป. 1)
+                '#4f46e5', // indigo-600 (สพม.)
+                '#38bdf8', // sky-400 (สพป. 3)
+                '#0284c7', // sky-600 (สพป. 2)
+                '#94a3b8'  // slate-400 (เอกชน)
+            ]
+        };
+
+        // Helper function for tooltips
+        const chartTooltip = (context) => {
+            // --- UPDATED: Prioritize context.label (Activity Name) over dataset.label ---
+            const label = context.label || context.dataset.label || '';
+            // --- FIXED: Changed context.parsed to context.parsed.y to get the numerical value ---
+            const value = context.parsed.y; 
+            let formattedLabel = label;
+            if (formattedLabel) {
+                formattedLabel += ': ';
+            }
+            return `${formattedLabel}${value} คน`;
+        };
+        
+        const chartTooltipPercentage = (context) => {
+            const label = context.label || '';
+            const value = context.parsed;
+            const sum = context.dataset.data.reduce((a, b) => a + b, 0);
+            const percentage = ((value / sum) * 100).toFixed(1) + '%';
+            return ` ${label}: ${value} คน (${percentage})`;
+        };
+
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: { label: chartTooltipPercentage },
+                    bodyFont: { family: 'Sarabun' },
+                    titleFont: { family: 'Titr' }
+                }
+            }
+        };
+
+        // 1. Overall Bar Chart (Section 3)
+        const overallBarCtx = document.getElementById('overallBarChart').getContext('2d');
+        new Chart(overallBarCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'การสร้างสื่อ (14 ต.ค.)', 
+                    'การใช้ AI (15 ต.ค.)', 
+                    'การจัดทำแผน (16 ต.ค.)'
+                ],
+                datasets: [{
+                    label: 'ผู้เข้าร่วมทั้งหมด',
+                    data: [181, 149, 132],
+                    // THEME UPDATE: Replaced multi-color with sequential blue
+                    backgroundColor: blueTheme.sequential, 
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: { label: chartTooltip },
+                        bodyFont: { family: 'Sarabun' },
+                        titleFont: { family: 'Titr' }
+                    },
+                    // --- ADDED DATALABELS ---
+                    datalabels: {
+                        display: true,
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#334155', // slate-700
+                        font: {
+                            family: 'Titr',
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        formatter: (value, context) => {
+                            return value + ' คน';
+                        }
+                    }
+                    // --- END OF ADDED DATALABELS ---
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // 2. Overall Doughnut Chart (Section 3)
+        // Data: สพป.1 (165), สพม. (134), สพป.2 (74), สพป.3 (74), อื่นๆ (15) = Total 462
+        const overallDoughnutCtx = document.getElementById('overallDoughnutChart').getContext('2d');
+        new Chart(overallDoughnutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'สพป. เลย เขต 1', 
+                    'สพม. เลย-นภ', 
+                    'สพป. เลย เขต 2', 
+                    'สพป. เลย เขต 3', 
+                    'เอกชน/ท้องถิ่น'
+                ],
+                datasets: [{
+                    data: [165, 134, 74, 74, 15],
+                    // THEME UPDATE: Replaced multi-color with categorical blue
+                    backgroundColor: blueTheme.categorical
+                }]
+            },
+            options: {
+                ...chartOptions,
+                cutout: '70%',
+                plugins: {
+                    ...chartOptions.plugins,
+                    legend: { 
+                        position: 'bottom',
+                        labels: { fontFamily: 'Sarabun' }
+                    },
+                    // --- ADDED DATALABELS ---
+                    datalabels: {
+                        display: true,
+                        color: 'white',
+                        font: {
+                            family: 'Sarabun',
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: (value, context) => {
+                            const sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((value / sum) * 100).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    }
+                    // --- END OF ADDED DATALABELS ---
+                }
+            }
+        });
+
+        // --- Activity-Specific Charts (Section 4) ---
+
+        // 3. Activity 1 Doughnut
+        const act1Ctx = document.getElementById('activity1Chart').getContext('2d');
+        new Chart(act1Ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'สพป. เลย เขต 1', 
+                    'สพม. เลย-นภ', 
+                    'สพป. เลย เขต 2', 
+                    'สพป. เลย เขต 3', 
+                    'เอกชน/ท้องถิ่น'
+                ],
+                datasets: [{
+                    data: [64, 54, 29, 29, 5], // 64, 117
+                    // THEME UPDATE: Replaced multi-color with categorical blue
+                    backgroundColor: blueTheme.categorical
+                }]
+            },
+            options: {
+                ...chartOptions,
+                cutout: '70%',
+                plugins: {
+                     ...chartOptions.plugins,
+                    legend: { 
+                        display: true, 
+                        position: 'bottom', 
+                        labels: { fontFamily: 'Sarabun' } 
+                    },
+                    // --- ADDED DATALABELS ---
+                    datalabels: {
+                        display: true,
+                        color: 'white',
+                        font: {
+                            family: 'Sarabun',
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: (value, context) => {
+                            const sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((value / sum) * 100).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    }
+                    // --- END OF ADDED DATALABELS ---
+                }
+            }
+        });
+
+        // 4. Activity 2 Doughnut
+        const act2Ctx = document.getElementById('activity2Chart').getContext('2d');
+        new Chart(act2Ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'สพป. เลย เขต 1', 
+                    'สพม. เลย-นภ', 
+                    'สพป. เลย เขต 2', 
+                    'สพป. เลย เขต 3', 
+                    'เอกชน/ท้องถิ่น'
+                ],
+                datasets: [{
+                    data: [55, 43, 23, 22, 7], // 55, 94
+                    // THEME UPDATE: Replaced multi-color with categorical blue
+                    backgroundColor: blueTheme.categorical
+                }]
+            },
+            options: {
+                ...chartOptions,
+                cutout: '70%',
+                plugins: {
+                    ...chartOptions.plugins,
+                    legend: { 
+                        display: true, 
+                        position: 'bottom', 
+                        labels: { fontFamily: 'Sarabun' } 
+                    },
+                    // --- ADDED DATALABELS ---
+                    datalabels: {
+                        display: true,
+                        color: 'white',
+                        font: {
+                            family: 'Sarabun',
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: (value, context) => {
+                            const sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((value / sum) * 100).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    }
+                    // --- END OF ADDED DATALABELS ---
+                }
+            }
+        });
+
+        // 5. Activity 3 Doughnut
+        const act3Ctx = document.getElementById('activity3Chart').getContext('2d');
+        new Chart(act3Ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'สพป. เลย เขต 1', 
+                    'สพม. เลย-นภ', 
+                    'สพป. เลย เขต 3', 
+                    'สพป. เลย เขต 2', 
+                    'เอกชน/ท้องถิ่น'
+                ],
+                datasets: [{
+                    data: [46, 37, 23, 22, 4], // 46, 86
+                    // THEME UPDATE: Replaced multi-color with specific categorical blue
+                    backgroundColor: blueTheme.act3Categorical
+                }]
+            },
+             options: {
+                ...chartOptions,
+                cutout: '70%',
+                plugins: {
+                    ...chartOptions.plugins,
+                    legend: { 
+                        display: true, 
+                        position: 'bottom', 
+                        labels: { fontFamily: 'Sarabun' } 
+                    },
+                    // --- ADDED DATALABELS ---
+                    datalabels: {
+                        display: true,
+                        color: 'white',
+                        font: {
+                            family: 'Sarabun',
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: (value, context) => {
+                            const sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((value / sum) * 100).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    }
+                    // --- END OF ADDED DATALABELS ---
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>
